@@ -9,7 +9,7 @@ const Home = () => {
       {/* Hero Section - Full Width */}
       <section className="relative w-full">
         {/* Hero Image - Full Width */}
-        <div className="relative w-full h-[600px]">
+        <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
           <img
             src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2400"
             alt="Beach Yoga"
@@ -18,21 +18,21 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/60"></div>
           
           {/* Hero Text Overlay */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-[0.3em] text-gray-800 mb-4 text-center drop-shadow-sm">
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-6">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-[0.2em] md:tracking-[0.3em] text-gray-800 mb-3 md:mb-4 text-center drop-shadow-sm">
               JAHANJI MEDITATION CENTER
             </h1>
-            <p className="text-gray-700 max-w-4xl text-center leading-relaxed text-sm md:text-base drop-shadow-sm">
+            <p className="text-gray-700 max-w-4xl text-center leading-relaxed text-xs md:text-sm lg:text-base drop-shadow-sm px-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
         </div>
 
         {/* Event Banner - Overlapping */}
-        <div className="container mx-auto px-6 relative -mt-12">
-          <div className="bg-white border-t-4 border-[#6B7F69] py-6 text-center shadow-xl rounded-md max-w-4xl mx-auto">
-            <p className="text-gray-400 text-xs uppercase tracking-wider mb-2">Next Event</p>
-            <p className="text-3xl font-bold text-gray-600 tracking-wide">
+        <div className="container mx-auto px-4 md:px-6 relative -mt-8 md:-mt-12">
+          <div className="bg-white border-t-4 border-[#6B7F69] py-4 md:py-6 text-center shadow-xl rounded-md max-w-4xl mx-auto">
+            <p className="text-gray-400 text-xs uppercase tracking-wider mb-1 md:mb-2">Next Event</p>
+            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-600 tracking-wide">
               FEB 17th 5:00 PM to 7:00 PM
             </p>
           </div>
