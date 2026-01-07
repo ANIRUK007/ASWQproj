@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Leaf, Instagram, Twitter, Facebook, Youtube } from 'lucide-react';
+import { Flower2, Instagram, Twitter, Facebook, Youtube } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-2">
             <div className="bg-[#6B7F69] rounded-full p-2">
-              <Leaf className="w-5 h-5 text-white" />
+              <Flower2 className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold tracking-wider text-gray-800">JAHANJI</span>
           </div>
