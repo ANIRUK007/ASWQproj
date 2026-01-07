@@ -32,22 +32,22 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-800 mb-3">
+    <div className="min-h-screen py-12 md:py-20 bg-gray-50">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-12 md:mb-16">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3">
             Contact Page
           </h1>
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}
             <Card className="bg-white shadow-lg">
-              <CardContent className="p-8">
+              <CardContent className="p-6 md:p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-gray-700 font-medium mb-2 text-sm md:text-base">
                       Name
                     </label>
                     <Input
@@ -62,7 +62,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-gray-700 font-medium mb-2 text-sm md:text-base">
                       Comment
                     </label>
                     <Input
@@ -76,7 +76,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-gray-700 font-medium mb-2 text-sm md:text-base">
                       Email
                     </label>
                     <Input
@@ -91,7 +91,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-gray-700 font-medium mb-2 text-sm md:text-base">
                       Message
                     </label>
                     <Textarea
@@ -106,7 +106,7 @@ const Contact = () => {
 
                   <Button
                     type="submit"
-                    className="w-full bg-gray-800 hover:bg-gray-900 text-white py-3 text-lg font-semibold"
+                    className="w-full bg-gray-800 hover:bg-gray-900 text-white py-3 text-base md:text-lg font-semibold"
                   >
                     Submit
                   </Button>
@@ -116,18 +116,18 @@ const Contact = () => {
 
             {/* Contact Information */}
             <Card className="bg-[#6B7F69] text-white shadow-lg h-fit">
-              <CardContent className="p-8">
-                <h2 className="text-3xl font-bold mb-6">Contact</h2>
-                <p className="text-white/90 mb-8 leading-relaxed">
+              <CardContent className="p-6 md:p-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Contact</h2>
+                <p className="text-white/90 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
                 </p>
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <MapPin className="w-6 h-6 mt-1 flex-shrink-0" />
+                    <MapPin className="w-5 h-5 md:w-6 md:h-6 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold mb-1">Address</h3>
-                      <p className="text-white/90">
+                      <h3 className="font-semibold mb-1 text-sm md:text-base">Address</h3>
+                      <p className="text-white/90 text-sm md:text-base">
                         123 Meditation Lane<br />
                         Peaceful City, PC 12345
                       </p>
@@ -135,18 +135,18 @@ const Contact = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <Phone className="w-6 h-6 mt-1 flex-shrink-0" />
+                    <Phone className="w-5 h-5 md:w-6 md:h-6 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold mb-1">Phone</h3>
-                      <p className="text-white/90">+1 234 567 8900</p>
+                      <h3 className="font-semibold mb-1 text-sm md:text-base">Phone</h3>
+                      <p className="text-white/90 text-sm md:text-base">+1 234 567 8900</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <Mail className="w-6 h-6 mt-1 flex-shrink-0" />
+                    <Mail className="w-5 h-5 md:w-6 md:h-6 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-white/90">info@jahanji.com</p>
+                      <h3 className="font-semibold mb-1 text-sm md:text-base">Email</h3>
+                      <p className="text-white/90 text-sm md:text-base">info@jahanji.com</p>
                     </div>
                   </div>
                 </div>
