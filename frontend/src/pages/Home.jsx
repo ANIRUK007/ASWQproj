@@ -40,24 +40,24 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-[#f0f4f0]">
-        <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold text-center text-gray-800 mb-20 tracking-wide">
+      <section className="py-16 md:py-24 bg-[#f0f4f0]">
+        <div className="container mx-auto px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-12 md:mb-20 tracking-wide">
             Our Services
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-center">
             {/* Get Started Card - Dark Green with Call to Action - Taller */}
-            <Card className="bg-[#6B7F69] text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden">
-              <CardContent className="p-10 flex flex-col items-center justify-center text-center h-full min-h-[420px]">
-                <h3 className="text-3xl font-bold mb-2">Get Started</h3>
-                <h4 className="text-2xl font-semibold mb-6">With Us</h4>
-                <p className="text-white/95 mb-8 text-sm leading-relaxed">
+            <Card className="bg-[#6B7F69] text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden sm:col-span-2 lg:col-span-1">
+              <CardContent className="p-8 md:p-10 flex flex-col items-center justify-center text-center h-full min-h-[320px] md:min-h-[420px]">
+                <h3 className="text-2xl md:text-3xl font-bold mb-2">Get Started</h3>
+                <h4 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6">With Us</h4>
+                <p className="text-white/95 mb-6 md:mb-8 text-sm leading-relaxed">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.
                 </p>
                 <Button
                   variant="outline"
-                  className="bg-white text-[#6B7F69] hover:bg-gray-50 border-0 px-8 py-6 text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-white text-[#6B7F69] hover:bg-gray-50 border-0 px-6 md:px-8 py-4 md:py-6 text-sm md:text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Get started today
                 </Button>
@@ -66,11 +66,11 @@ const Home = () => {
 
             {/* Music Service - Elegant White Card - Smaller */}
             <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
-              <CardContent className="p-8 flex flex-col items-center text-center h-full min-h-[320px]">
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-5 rounded-full mb-5 shadow-inner">
-                  <Music className="w-10 h-10 text-[#6B7F69]" strokeWidth={1.5} />
+              <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
+                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
+                  <Music className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Music</h3>
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Music</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
@@ -79,11 +79,11 @@ const Home = () => {
 
             {/* Dance Service - Elegant White Card - Smaller */}
             <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
-              <CardContent className="p-8 flex flex-col items-center text-center h-full min-h-[320px]">
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-5 rounded-full mb-5 shadow-inner">
-                  <LayoutGrid className="w-10 h-10 text-[#6B7F69]" strokeWidth={1.5} />
+              <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
+                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
+                  <LayoutGrid className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Dance</h3>
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Dance</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
@@ -92,11 +92,11 @@ const Home = () => {
 
             {/* Free Lessons Service - Elegant White Card - Smaller */}
             <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
-              <CardContent className="p-8 flex flex-col items-center text-center h-full min-h-[320px]">
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-5 rounded-full mb-5 shadow-inner">
-                  <GraduationCap className="w-10 h-10 text-[#6B7F69]" strokeWidth={1.5} />
+              <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
+                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
+                  <GraduationCap className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Free Lessons</h3>
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Free Lessons</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
@@ -107,13 +107,13 @@ const Home = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold text-center text-gray-800 mb-20 tracking-wide">
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-12 md:mb-20 tracking-wide">
             Time Line
           </h2>
-          <div className="h-64 flex items-center justify-center">
-            <p className="text-gray-400 text-lg italic">Timeline content coming soon...</p>
+          <div className="h-48 md:h-64 flex items-center justify-center">
+            <p className="text-gray-400 text-base md:text-lg italic">Timeline content coming soon...</p>
           </div>
         </div>
       </section>
