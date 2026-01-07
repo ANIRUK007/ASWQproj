@@ -46,7 +46,7 @@ const Home = () => {
             Our Services
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-center">
             {/* Get Started Card - Dark Green with Call to Action - Taller */}
             <Card className="bg-[#6B7F69] text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden">
               <CardContent className="p-10 flex flex-col items-center justify-center text-center h-full min-h-[420px]">
