@@ -5,46 +5,61 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const Home = () => {
   const servicesRef = useRef(null);
-  const [cardPositions, setCardPositions] = useState([0, 0, 0, 0]);
+  const cardsContainerRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!servicesRef.current) return;
+      if (!cardsContainerRef.current) return;
 
-      const section = servicesRef.current;
-      const sectionRect = section.getBoundingClientRect();
-      const sectionTop = sectionRect.top;
-      const sectionHeight = sectionRect.height;
+      const container = cardsContainerRef.current;
+      const rect = container.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-
-      // Start animation when section enters viewport
-      if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
-        // Calculate scroll progress within the section
-        const scrollProgress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / (windowHeight + sectionHeight / 2)));
-        
-        // Calculate positions for each card
-        const newPositions = [0, 0, 0, 0];
-        
-        // Each card starts moving at different scroll points
-        const cardThresholds = [0, 0.25, 0.5, 0.75];
-        
-        cardThresholds.forEach((threshold, index) => {
-          if (scrollProgress > threshold) {
-            const cardProgress = Math.min(1, (scrollProgress - threshold) / 0.25);
-            // Move card up (negative translateY)
-            newPositions[index] = -cardProgress * 100;
-          }
-        });
-
-        setCardPositions(newPositions);
+      
+      // Calculate how far the container has scrolled into view
+      // When top of container hits middle of screen, start animation
+      const startPoint = windowHeight * 0.7; // Start when container is 70% into viewport
+      const endPoint = -rect.height + windowHeight * 0.3; // End when container is leaving
+      
+      let progress = 0;
+      if (rect.top < startPoint && rect.top > endPoint) {
+        progress = (startPoint - rect.top) / (startPoint - endPoint);
+        progress = Math.max(0, Math.min(1, progress));
+      } else if (rect.top <= endPoint) {
+        progress = 1;
       }
+      
+      setScrollProgress(progress);
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Calculate individual card positions based on scroll progress
+  const getCardTransform = (cardIndex) => {
+    const totalCards = 4;
+    const cardStartProgress = cardIndex / totalCards;
+    const cardEndProgress = (cardIndex + 1) / totalCards;
+    
+    let cardProgress = 0;
+    if (scrollProgress > cardStartProgress) {
+      cardProgress = Math.min(1, (scrollProgress - cardStartProgress) / (cardEndProgress - cardStartProgress));
+    }
+    
+    // Calculate initial offset (starting position below)
+    const initialOffset = cardIndex * 360; // 360px gap between cards initially
+    
+    // Calculate final position (all stacked at top)
+    const finalOffset = 0;
+    
+    // Interpolate between initial and final
+    const currentOffset = initialOffset - (cardProgress * initialOffset);
+    
+    return currentOffset;
+  };
 
   return (
     <div className="min-h-screen">
@@ -82,65 +97,116 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section ref={servicesRef} className="py-16 md:py-24 bg-[#f0f4f0] min-h-[150vh]">
+      <section ref={servicesRef} className="py-16 md:py-24 bg-[#f0f4f0]">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-12 md:mb-20 tracking-wide">
             Our Services
           </h2>
 
-          <div className="relative max-w-7xl mx-auto">
-            {/* Desktop Layout - Hidden on mobile/tablet */}
-            <div className="hidden lg:grid grid-cols-4 gap-6 items-center">
-              {/* Get Started Card - Dark Green with Call to Action - Taller */}
-              <Card className="bg-[#6B7F69] text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden">
-                <CardContent className="p-8 md:p-10 flex flex-col items-center justify-center text-center h-full min-h-[320px] md:min-h-[420px]">
-                  <h3 className="text-2xl md:text-3xl font-bold mb-2">Get Started</h3>
-                  <h4 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6">With Us</h4>
-                  <p className="text-white/95 mb-6 md:mb-8 text-sm leading-relaxed">
+          {/* Desktop Layout - Hidden on mobile/tablet */}
+          <div className="hidden lg:grid grid-cols-4 gap-6 max-w-7xl mx-auto items-center">
+            {/* Get Started Card */}
+            <Card className="bg-[#6B7F69] text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden">
+              <CardContent className="p-8 md:p-10 flex flex-col items-center justify-center text-center h-full min-h-[320px] md:min-h-[420px]">
+                <h3 className="text-2xl md:text-3xl font-bold mb-2">Get Started</h3>
+                <h4 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6">With Us</h4>
+                <p className="text-white/95 mb-6 md:mb-8 text-sm leading-relaxed">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.
+                </p>
+                <Button
+                  variant="outline"
+                  className="bg-white text-[#6B7F69] hover:bg-gray-50 border-0 px-6 md:px-8 py-4 md:py-6 text-sm md:text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  Get started today
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Music Service */}
+            <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
+              <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
+                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
+                  <Music className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Music</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Dance Service */}
+            <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
+              <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
+                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
+                  <LayoutGrid className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Dance</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Free Lessons Service */}
+            <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
+              <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
+                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
+                  <GraduationCap className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Free Lessons</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Mobile/Tablet Stacking Layout */}
+          <div 
+            ref={cardsContainerRef}
+            className="lg:hidden relative mx-auto max-w-sm"
+            style={{ minHeight: '1800px' }}
+          >
+            {/* Get Started Card - Base card */}
+            <div 
+              className="sticky top-20 w-full transition-all duration-300 ease-out"
+              style={{ 
+                transform: `translateY(${getCardTransform(0)}px)`,
+                zIndex: 10
+              }}
+            >
+              <Card className="bg-[#6B7F69] text-white shadow-2xl rounded-3xl overflow-hidden">
+                <CardContent className="p-8 flex flex-col items-center justify-center text-center min-h-[360px]">
+                  <h3 className="text-2xl font-bold mb-2">Get Started</h3>
+                  <h4 className="text-xl font-semibold mb-4">With Us</h4>
+                  <p className="text-white/95 mb-6 text-sm leading-relaxed">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.
                   </p>
                   <Button
                     variant="outline"
-                    className="bg-white text-[#6B7F69] hover:bg-gray-50 border-0 px-6 md:px-8 py-4 md:py-6 text-sm md:text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="bg-white text-[#6B7F69] hover:bg-gray-50 border-0 px-6 py-4 text-sm font-semibold rounded-xl shadow-lg"
                   >
                     Get started today
                   </Button>
                 </CardContent>
               </Card>
+            </div>
 
-              {/* Music Service */}
-              <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
-                <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
-                    <Music className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
+            {/* Music Card */}
+            <div 
+              className="sticky top-20 w-full transition-all duration-300 ease-out -mt-[360px]"
+              style={{ 
+                transform: `translateY(${getCardTransform(1)}px)`,
+                zIndex: 20
+              }}
+            >
+              <Card className="bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-100">
+                <CardContent className="p-6 flex flex-col items-center text-center min-h-[340px]">
+                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 rounded-full mb-4 shadow-inner">
+                    <Music className="w-8 h-8 text-[#6B7F69]" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Music</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Dance Service */}
-              <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
-                <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
-                    <LayoutGrid className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Dance</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Free Lessons Service */}
-              <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
-                <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
-                    <GraduationCap className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Free Lessons</h3>
+                  <h3 className="text-lg font-bold text-gray-800 mb-3">Music</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   </p>
@@ -148,99 +214,46 @@ const Home = () => {
               </Card>
             </div>
 
-            {/* Mobile/Tablet Stacking Layout */}
-            <div className="lg:hidden relative h-[600px] md:h-[700px]">
-              {/* Get Started Card - Base card */}
-              <div 
-                className="absolute left-1/2 -translate-x-1/2 w-full max-w-sm transition-transform duration-500 ease-out"
-                style={{ 
-                  transform: `translateX(-50%) translateY(${cardPositions[0]}%)`,
-                  zIndex: 10,
-                  top: '0px'
-                }}
-              >
-                <Card className="bg-[#6B7F69] text-white shadow-2xl rounded-3xl overflow-hidden">
-                  <CardContent className="p-8 flex flex-col items-center justify-center text-center min-h-[380px]">
-                    <h3 className="text-2xl font-bold mb-2">Get Started</h3>
-                    <h4 className="text-xl font-semibold mb-4">With Us</h4>
-                    <p className="text-white/95 mb-6 text-sm leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.
-                    </p>
-                    <Button
-                      variant="outline"
-                      className="bg-white text-[#6B7F69] hover:bg-gray-50 border-0 px-6 py-4 text-sm font-semibold rounded-xl shadow-lg"
-                    >
-                      Get started today
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
+            {/* Dance Card */}
+            <div 
+              className="sticky top-20 w-full transition-all duration-300 ease-out -mt-[340px]"
+              style={{ 
+                transform: `translateY(${getCardTransform(2)}px)`,
+                zIndex: 30
+              }}
+            >
+              <Card className="bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-100">
+                <CardContent className="p-6 flex flex-col items-center text-center min-h-[340px]">
+                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 rounded-full mb-4 shadow-inner">
+                    <LayoutGrid className="w-8 h-8 text-[#6B7F69]" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-800 mb-3">Dance</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
 
-              {/* Music Card */}
-              <div 
-                className="absolute left-1/2 -translate-x-1/2 w-full max-w-sm transition-transform duration-500 ease-out"
-                style={{ 
-                  transform: `translateX(-50%) translateY(calc(${cardPositions[1]}% + ${cardPositions[1] === 0 ? '420px' : '0px'}))`,
-                  zIndex: 20,
-                  top: '0px'
-                }}
-              >
-                <Card className="bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-100">
-                  <CardContent className="p-6 flex flex-col items-center text-center min-h-[340px]">
-                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 rounded-full mb-4 shadow-inner">
-                      <Music className="w-8 h-8 text-[#6B7F69]" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-3">Music</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Dance Card */}
-              <div 
-                className="absolute left-1/2 -translate-x-1/2 w-full max-w-sm transition-transform duration-500 ease-out"
-                style={{ 
-                  transform: `translateX(-50%) translateY(calc(${cardPositions[2]}% + ${cardPositions[2] === 0 ? '780px' : cardPositions[2] < -50 ? '0px' : '420px'}))`,
-                  zIndex: 30,
-                  top: '0px'
-                }}
-              >
-                <Card className="bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-100">
-                  <CardContent className="p-6 flex flex-col items-center text-center min-h-[340px]">
-                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 rounded-full mb-4 shadow-inner">
-                      <LayoutGrid className="w-8 h-8 text-[#6B7F69]" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-3">Dance</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Free Lessons Card */}
-              <div 
-                className="absolute left-1/2 -translate-x-1/2 w-full max-w-sm transition-transform duration-500 ease-out"
-                style={{ 
-                  transform: `translateX(-50%) translateY(calc(${cardPositions[3]}% + ${cardPositions[3] === 0 ? '1140px' : cardPositions[3] < -75 ? '0px' : cardPositions[3] < -50 ? '420px' : '780px'}))`,
-                  zIndex: 40,
-                  top: '0px'
-                }}
-              >
-                <Card className="bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-100">
-                  <CardContent className="p-6 flex flex-col items-center text-center min-h-[340px]">
-                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 rounded-full mb-4 shadow-inner">
-                      <GraduationCap className="w-8 h-8 text-[#6B7F69]" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-3">Free Lessons</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
+            {/* Free Lessons Card */}
+            <div 
+              className="sticky top-20 w-full transition-all duration-300 ease-out -mt-[340px]"
+              style={{ 
+                transform: `translateY(${getCardTransform(3)}px)`,
+                zIndex: 40
+              }}
+            >
+              <Card className="bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-100">
+                <CardContent className="p-6 flex flex-col items-center text-center min-h-[340px]">
+                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 rounded-full mb-4 shadow-inner">
+                    <GraduationCap className="w-8 h-8 text-[#6B7F69]" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-800 mb-3">Free Lessons</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
