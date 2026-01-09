@@ -1,77 +1,66 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Flower2, Instagram, Twitter, Facebook, Youtube } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Instagram, Twitter, Facebook, Youtube } from "lucide-react";
+import logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-white border-t border-gray-200 py-8 md:py-12 mt-12 md:mt-20">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
-          <div className="flex items-center gap-2">
-            <div className="bg-[#6B7F69] rounded-full p-2">
-              <Flower2 className="w-4 h-4 md:w-5 md:h-5 text-white" />
-            </div>
-            <span className="text-lg md:text-xl font-bold tracking-wider text-gray-800">JAHANJI</span>
-          </div>
+    <footer className="bg-white border-t border-[#dfe6dd] mt-20">
+      <div className="container mx-auto px-6 py-10 md:py-14">
 
-          <nav className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
-            <Link
-              to="/"
-              className="text-sm font-medium text-gray-600 hover:text-[#6B7F69] transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              to="/events"
-              className="text-sm font-medium text-gray-600 hover:text-[#6B7F69] transition-colors"
-            >
-              Events
-            </Link>
-            <Link
-              to="/about"
-              className="text-sm font-medium text-gray-600 hover:text-[#6B7F69] transition-colors"
-            >
-              About Us
-            </Link>
-            <Link
-              to="/contact"
-              className="text-sm font-medium text-gray-600 hover:text-[#6B7F69] transition-colors"
-            >
-              Contact
-            </Link>
+        {/* Top Row */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <img
+              src={logo}
+              alt="Jahanji Logo"
+              className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="text-xl font-semibold tracking-widest text-[#4f5f4d]">
+              JAHANJI
+            </span>
+          </Link>
+
+          {/* Navigation */}
+          <nav className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm font-medium">
+            {[
+              { path: "/", label: "Home" },
+              { path: "/events", label: "Events" },
+              { path: "/about", label: "About Us" },
+              { path: "/contact", label: "Contact" },
+            ].map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className="text-gray-600 hover:text-[#6B7F69] transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-6 md:mt-8 pt-6 md:pt-8 border-t border-gray-200">
-          <div className="flex items-center gap-3 md:gap-4">
-            <a
-              href="#"
-              className="bg-gray-100 p-2 rounded-full hover:bg-[#6B7F69] hover:text-white transition-all duration-300"
-            >
-              <Instagram className="w-4 h-4 md:w-5 md:h-5" />
-            </a>
-            <a
-              href="#"
-              className="bg-gray-100 p-2 rounded-full hover:bg-[#6B7F69] hover:text-white transition-all duration-300"
-            >
-              <Twitter className="w-4 h-4 md:w-5 md:h-5" />
-            </a>
-            <a
-              href="#"
-              className="bg-gray-100 p-2 rounded-full hover:bg-[#6B7F69] hover:text-white transition-all duration-300"
-            >
-              <Facebook className="w-4 h-4 md:w-5 md:h-5" />
-            </a>
-            <a
-              href="#"
-              className="bg-gray-100 p-2 rounded-full hover:bg-[#6B7F69] hover:text-white transition-all duration-300"
-            >
-              <Youtube className="w-4 h-4 md:w-5 md:h-5" />
-            </a>
+        {/* Bottom Row */}
+        <div className="mt-10 pt-8 border-t border-[#e2e8e0] flex flex-col md:flex-row justify-between items-center gap-6">
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-4">
+            {[Instagram, Twitter, Facebook, Youtube].map((Icon, i) => (
+              <a
+                key={i}
+                href="#"
+                className="bg-[#f4f7f3] p-2.5 rounded-full text-gray-600 hover:bg-[#6B7F69] hover:text-white transition-all duration-300 hover:scale-110 shadow-sm"
+              >
+                <Icon className="w-4 h-4 md:w-5 md:h-5" />
+              </a>
+            ))}
           </div>
 
+          {/* Copyright */}
           <p className="text-xs md:text-sm text-gray-500 text-center">
-            Copyright 2025 | All Rights Reserved
+            © 2026 Jahanji Meditation Center. All rights reserved.
           </p>
         </div>
       </div>

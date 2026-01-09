@@ -1,124 +1,162 @@
-import React from 'react';
-import { Music, LayoutGrid, GraduationCap } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Card, CardContent } from '../components/ui/card';
+import React from "react";
+import { Music, LayoutGrid, GraduationCap,Users,LocateIcon, MapPin} from "lucide-react";
+import { Button } from "../components/ui/button";
+import { Card, CardContent } from "../components/ui/card";
+import homeBg from "../assets/home-background-1.jpg"
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section - Full Width */}
-      <section className="relative w-full">
-        {/* Hero Image - Full Width */}
-        <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
+    <div className="min-h-screen bg-[#f7faf6]">
+
+      {/* HERO */}
+      <section className="relative">
+        <div className="relative h-[420px] md:h-[520px] lg:h-[560px]">
           <img
-            src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2400"
-            alt="Beach Yoga"
+            src={homeBg}
+            alt="Meditation"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/60"></div>
-          
-          {/* Hero Text Overlay */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-6">
-            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-[0.2em] md:tracking-[0.3em] text-gray-800 mb-3 md:mb-4 text-center drop-shadow-sm">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-white/90" />
+
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-[0.25em] text-[#4f5f4d] mb-4">
               JAHANJI MEDITATION CENTER
             </h1>
-            <p className="text-gray-700 max-w-4xl text-center leading-relaxed text-xs md:text-sm lg:text-base drop-shadow-sm px-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <p className="max-w-3xl text-gray-600 text-sm md:text-base leading-relaxed">
+              Welcome to Jahanji, your community route for guided meditation,
+              mindful connection, and shared moments of calm.
             </p>
           </div>
         </div>
 
-        {/* Event Banner - Overlapping */}
-        <div className="container mx-auto px-4 md:px-6 relative -mt-8 md:-mt-12">
-          <div className="bg-white border-t-4 border-[#6B7F69] py-4 md:py-6 text-center shadow-xl rounded-md max-w-4xl mx-auto">
-            <p className="text-gray-400 text-xs uppercase tracking-wider mb-1 md:mb-2">Next Event</p>
-            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-600 tracking-wide">
+        {/* EVENT STRIP */}
+        <div className="container mx-auto px-4 -mt-10 relative z-10">
+          <div className="bg-white border-4 border-[#6B7F69] rounded-2xl shadow-xl px-6 py-5 text-center max-w-5xl mx-auto">
+            <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
+              Next Event
+            </p>
+            <p className="text-xl md:text-2xl font-bold text-[#6B7F69]">
               FEB 17th 5:00 PM to 7:00 PM
             </p>
+            <p className="text-sm text-500 mt-1 font-bold text-[#6B7F69]">
+              35 Members (first come first serve basis)
+            </p >
+            <p className="mt-2 flex items-center justify-center gap-2 text-sm text-gray-500">
+              {<MapPin />} Dilsuknagar, Hyderabad
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16 md:py-24 bg-[#f0f4f0]">
-        <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-12 md:mb-20 tracking-wide">
-            Our Services
-          </h2>
+{/* SERVICES */}
+<section className="py-16 sm:py-20 bg-[#fafcf8]">
+  <h2 className="text-3xl sm:text-4xl font-bold text-center text-[#4f5f4d] mb-10 sm:mb-14">
+    Our Services
+  </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-center">
-            {/* Get Started Card - Dark Green with Call to Action - Taller */}
-            <Card className="bg-[#6B7F69] text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden sm:col-span-2 lg:col-span-1">
-              <CardContent className="p-8 md:p-10 flex flex-col items-center justify-center text-center h-full min-h-[320px] md:min-h-[420px]">
-                <h3 className="text-2xl md:text-3xl font-bold mb-2">Get Started</h3>
-                <h4 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6">With Us</h4>
-                <p className="text-white/95 mb-6 md:mb-8 text-sm leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.
-                </p>
-                <Button
-                  variant="outline"
-                  className="bg-white text-[#6B7F69] hover:bg-gray-50 border-0 px-6 md:px-8 py-4 md:py-6 text-sm md:text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  Get started today
-                </Button>
-              </CardContent>
-            </Card>
+  <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 border-l border-r border-[#dfe6dd]">
+    
+    <div className="
+      grid place-items-center
+      gap-8 lg:gap-14
+      grid-cols-1
+      sm:grid-cols-2
+      lg:grid-cols-3
+      xl:grid-cols-5
+    ">
 
-            {/* Music Service - Elegant White Card - Smaller */}
-            <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
-              <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
-                  <Music className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
-                </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Music</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </CardContent>
-            </Card>
+      {/* CTA */}
+      <Card className="
+        w-full sm:w-[280px]
+        bg-[#6B7F69] text-white rounded-3xl shadow-2xl
+        transition-all duration-300 ease-out 
+        hover:-translate-y-3 hover:shadow-3xl
+      ">
+        <CardContent className="p-6 sm:p-7 h-[300px] sm:h-[340px] flex flex-col justify-center text-center">
+          <h3 className="text-lg sm:text-xl font-bold">Get Started</h3>
+          <p className="mt-3 mb-5 text-white/90 text-xs leading-relaxed">
+            Whether new or experienced, Jahanji welcomes you into a space
+            of calm, connection, and growth.
+          </p>
+          <Button className="bg-white text-[#6B7F69] hover:bg-gray-100 rounded-xl text-xs">
+            Get Started Today
+          </Button>
+        </CardContent>
+      </Card>
 
-            {/* Dance Service - Elegant White Card - Smaller */}
-            <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
-              <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
-                  <LayoutGrid className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
-                </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Dance</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </CardContent>
-            </Card>
+      <ServiceCard icon={<LayoutGrid />} 
+      title={
+        <>
+          Introduction <br />
+          <span className="text-xs font-normal">(15 Min)</span>
+        </>
+      }text = "A gentle opening to ground the body, set intentions, and prepare the mind." />
+      <ServiceCard icon={<Music />}
+      title={
+        <>
+          Music <br />
+          <span className="text-xs font-normal">(15 Min)</span>
+        </>
+      }text="A calm beginning to arrive fully, set intentions, and ground yourself." />
+      <ServiceCard icon={<GraduationCap />} 
+      title={
+        <>
+          Silence <br />
+          <span className="text-xs font-normal">(15 Min)</span>
+        </>
+      }text="A sacred pause. Sit with stillness, observe your breath, and experience clarity beyond words." />
+      <ServiceCard icon={<Users />} 
+      title={
+        <>
+          Networking <br />
+          <span className="text-xs font-normal">(15 Min)</span>
+        </>
+      }
+      text="Connect with like-minded people." />
 
-            {/* Free Lessons Service - Elegant White Card - Smaller */}
-            <Card className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 rounded-3xl overflow-hidden border border-gray-100">
-              <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px]">
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-5 rounded-full mb-4 md:mb-5 shadow-inner">
-                  <GraduationCap className="w-8 h-8 md:w-10 md:h-10 text-[#6B7F69]" strokeWidth={1.5} />
-                </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Free Lessons</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+    </div>
+  </div>
+</section>
 
-      {/* Timeline Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-12 md:mb-20 tracking-wide">
-            Time Line
-          </h2>
-          <div className="h-48 md:h-64 flex items-center justify-center">
-            <p className="text-gray-400 text-base md:text-lg italic">Timeline content coming soon...</p>
-          </div>
-        </div>
+      {/* CURVE */}
+      <section className="relative bg-[#fafcf8]">
+        <svg viewBox="0 0 1440 120" className="w-full block" preserveAspectRatio="none">
+          <path
+            fill="#f0f4f0"
+            d="M0,64L60,74.7C120,85,240,107,360,96C480,85,600,43,720,32C840,21,960,43,1080,58.7C1200,75,1320,85,1380,90.7L1440,96L1440,0L0,0Z"
+          />
+        </svg>
       </section>
     </div>
   );
 };
+
+/* SERVICE CARD */
+const ServiceCard = ({
+  icon,
+  title,
+  text,
+  width = "200px",
+  height = "200px",
+}) => (
+  <Card
+    style={{ width, height }}
+    className="
+      bg-white rounded-2xl shadow-xl
+      flex items-center justify-center
+      transition-all duration-300 ease-out
+      hover:-translate-y-3 hover:shadow-2xl
+    "
+  >
+    <CardContent className="p-5 text-center flex flex-col justify-center h-full">
+      <div className="w-8 h-8 mx-auto text-[#6B7F69]">{icon}</div>
+      <h3 className="mt-2 text-sm font-semibold">{title}</h3>
+      <p className="mt-1 text-xs text-gray-600 leading-relaxed">{text}</p>
+    </CardContent>
+  </Card>
+);
+
+
+
 
 export default Home;
