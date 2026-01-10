@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -11,7 +11,7 @@ import { Toaster } from "./components/ui/toaster";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter  basename="/ASWQproj">
+      <HashRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -21,7 +21,7 @@ function App() {
         </Routes>
         <Footer />
         <Toaster />
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
