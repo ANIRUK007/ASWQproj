@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ASWQproj.git/static/css/main.c6947c3e.css",
-    "main.js": "/ASWQproj.git/static/js/main.326d1761.js",
-    "static/media/logo.png": "/ASWQproj.git/static/media/logo.323fc23c1312070ede29.png",
-    "static/media/instructer_img.jpeg": "/ASWQproj.git/static/media/instructer_img.fed5206c1446e8ff96a5.jpeg",
-    "static/media/home-background-1.jpg": "/ASWQproj.git/static/media/home-background-1.03f0c94b5e1b425f3c40.jpg",
-    "index.html": "/ASWQproj.git/index.html",
-    "main.c6947c3e.css.map": "/ASWQproj.git/static/css/main.c6947c3e.css.map",
-    "main.326d1761.js.map": "/ASWQproj.git/static/js/main.326d1761.js.map"
+    "main.css": "/ASWQproj/static/css/main.c6947c3e.css",
+    "main.js": "/ASWQproj/static/js/main.f3acd763.js",
+    "static/media/logo.png": "/ASWQproj/static/media/logo.323fc23c1312070ede29.png",
+    "static/media/instructer_img.jpeg": "/ASWQproj/static/media/instructer_img.fed5206c1446e8ff96a5.jpeg",
+    "static/media/home-background-1.jpg": "/ASWQproj/static/media/home-background-1.03f0c94b5e1b425f3c40.jpg",
+    "index.html": "/ASWQproj/index.html",
+    "main.c6947c3e.css.map": "/ASWQproj/static/css/main.c6947c3e.css.map",
+    "main.f3acd763.js.map": "/ASWQproj/static/js/main.f3acd763.js.map"
   },
   "entrypoints": [
     "static/css/main.c6947c3e.css",
-    "static/js/main.326d1761.js"
+    "static/js/main.f3acd763.js"
   ]
 }
