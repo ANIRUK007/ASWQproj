@@ -119,7 +119,7 @@ const Contact = () => {
               <CardContent className="p-6 md:p-8">
                 <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Contact</h2>
                 <p className="text-white/90 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                  Connect with us for any queries or discussions.
                 </p>
 
                 <div className="space-y-6">

@@ -23,8 +23,7 @@ const Home = () => {
               JAHANJI YOGA & MEDITATION CENTER
             </h1>
             <p className="max-w-3xl text-gray-600 text-sm md:text-base leading-relaxed">
-              Welcome to Jahanji, your community route for guided meditation,
-              mindful connection, and shared moments of calm.
+              Join Us for Yoga, Guided Meditation, Mindful Connection & Celebration
             </p>
           </div>
         </div>
@@ -40,6 +39,9 @@ const Home = () => {
             </p>
             <p className="text-sm text-500 mt-1 font-bold text-[#6B7F69]">
               35 Members (first come first serve basis)
+            </p >
+            <p className="text-sm text-500 mt-1 font-bold text-[#6B7F69]">
+              Session's Language: English
             </p >
             <p className="mt-2 flex items-center justify-center gap-2 text-sm text-gray-500">
               {<MapPin />} Dilsuknagar, Hyderabad
@@ -109,11 +111,11 @@ const Home = () => {
           <ServiceCard icon={<Users />} 
           title={
             <>
-              Networking <br />
+              Discourse <br />
               <span className="text-xs font-normal">(15 Min)</span>
             </>
           }
-          text="Connect with like-minded people." />
+          text="Where ideas, opinions, and conversations meet." />
         </div>
       </div>
 
