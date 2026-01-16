@@ -20,10 +20,10 @@ const Home = () => {
 
           <div className="absolute inset-0 flex flex-col items-center justify-start md:justify-center text-center px-4 pt-8 md:pt-0">
             <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-[0.25em] text-[#4f5f4d] mb-4">
-              JAHANJI YOGA & MEDITATION CENTER
+              JAHANJI's <br></br>YOGA & MEDITATION <br></br>CENTER
             </h1>
             <p className="max-w-3xl text-gray-600 text-sm md:text-base leading-relaxed">
-              Join Us for Yoga, Guided Meditation, Mindful Connection & Celebration
+              Join Us for Yoga, Guided Meditation, Mindfullness & Celebration
             </p>
           </div>
         </div>
