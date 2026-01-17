@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ASWQproj/static/css/main.2575f4a4.css",
-    "main.js": "/ASWQproj/static/js/main.326623f1.js",
+    "main.css": "/ASWQproj/static/css/main.fb322b59.css",
+    "main.js": "/ASWQproj/static/js/main.0d7742e2.js",
     "static/media/logo.png": "/ASWQproj/static/media/logo.323fc23c1312070ede29.png",
     "static/media/instructer_img.jpeg": "/ASWQproj/static/media/instructer_img.fed5206c1446e8ff96a5.jpeg",
     "static/media/home-background-1.jpg": "/ASWQproj/static/media/home-background-1.03f0c94b5e1b425f3c40.jpg",
     "static/media/book_snap.jpg": "/ASWQproj/static/media/book_snap.c471f9d72e62012db5f4.jpg",
     "index.html": "/ASWQproj/index.html",
-    "main.2575f4a4.css.map": "/ASWQproj/static/css/main.2575f4a4.css.map",
-    "main.326623f1.js.map": "/ASWQproj/static/js/main.326623f1.js.map"
+    "main.fb322b59.css.map": "/ASWQproj/static/css/main.fb322b59.css.map",
+    "main.0d7742e2.js.map": "/ASWQproj/static/js/main.0d7742e2.js.map"
   },
   "entrypoints": [
-    "static/css/main.2575f4a4.css",
-    "static/js/main.326623f1.js"
+    "static/css/main.fb322b59.css",
+    "static/js/main.0d7742e2.js"
   ]
 }
